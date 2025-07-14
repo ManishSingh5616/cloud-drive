@@ -5,14 +5,6 @@ const UserModel = require('../models/user.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-router.get('/', (req, res) => {
-    res.render('/user/register', { title: 'User Home' });
-});
-
-router.get('/register', (req, res) => {
-    res.render('register', { title: 'User Registration' });
-});
-
 
 router.post('/register', 
     body('username').trim().isLength({ min: 3 }).withMessage('Username must be at least 3 characters long'),

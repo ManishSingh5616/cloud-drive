@@ -4,7 +4,15 @@ const User = require('../models/user.model');
 
 
 const router = express.Router();
-const { body, validationResult } = require('express-validator');   
+const { body, validationResult } = require('express-validator');
+
+router.get('/', (req, res) => {
+  const token = req.cookies.token;
+  if (token) {
+    return res.redirect('/home');
+  }
+  res.redirect('/user/register');
+});
 
 
 router.get('/home', isAuth, async (req, res) => {
