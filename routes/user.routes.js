@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 router.get('/', (req, res) => {
-    res.render('index', { title: 'User Home' });
+    res.render('/user/register', { title: 'User Home' });
 });
 
 router.get('/register', (req, res) => {
