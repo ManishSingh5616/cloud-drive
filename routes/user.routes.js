@@ -5,7 +5,6 @@ const UserModel = require('../models/user.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-
 router.post('/register', 
     body('username').trim().isLength({ min: 3 }).withMessage('Username must be at least 3 characters long'),
     body('email').trim().isEmail().isLength({min : 13}).withMessage('Please enter a valid email address'),
