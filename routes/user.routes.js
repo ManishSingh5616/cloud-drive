@@ -5,6 +5,10 @@ const UserModel = require('../models/user.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+router.get('/register', (req, res) => {
+    res.render('register');
+});  
+
 router.post('/register', 
     body('username').trim().isLength({ min: 3 }).withMessage('Username must be at least 3 characters long'),
     body('email').trim().isEmail().isLength({min : 13}).withMessage('Please enter a valid email address'),
@@ -12,10 +16,9 @@ router.post('/register',
     async (req,res)=>{
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ 
-            errors: errors.array(),
-            message: 'Validation failed. Please check your input.'
-         });
+        return res.render('register', {
+          error: 'Validation failed. Please check your input.'
+       });
     }
     
     const { username, email, password } = req.body;
@@ -39,7 +42,7 @@ router.post('/register',
         password : hashedPassword
     })
 
-    res.json(newUser);
+    res.redirect('/user/login');
 });
 
 
@@ -65,9 +68,9 @@ router.post('/login',
             username: username
         })
         if(!user){
-            return res.status(400).json({
-                message: 'Username or Password is Incorrect.'
-            })
+            return res.render('login', {
+               error: 'Username or password is incorrect.'
+            });
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
