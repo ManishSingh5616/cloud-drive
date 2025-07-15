@@ -7,7 +7,7 @@ const router = express.Router();
 const { body, validationResult } = require('express-validator');
 
 router.get('/', (req, res) => {
-  res.redirect('/user/register');
+  res.redirect('/user/login');
 });
 
 
