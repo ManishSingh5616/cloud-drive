@@ -7,9 +7,8 @@ const router = express.Router();
 const { body, validationResult } = require('express-validator');
 
 router.get('/', (req, res) => {
-  res.redirect('/index');
+  res.render('index');
 });
-
 
 router.get('/home', isAuth, async (req, res) => {
   try {

@@ -22,7 +22,6 @@ app.use('/', uploadRoutes);
 
 app.set('view engine', 'ejs');
 
-
 const Port = process.env.PORT || 3000;
 app.listen(Port, () => {
     console.log(`Server is running on port ${Port}`);
