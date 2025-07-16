@@ -46,12 +46,4 @@
 
 ---
 
-## 📦 How to Use Locally
-
-### 1. Clone the Repo
-
-```bash
-git clone https://github.com/yourusername/cloud-drive.git
-cd cloud-drive
-npm install
 
