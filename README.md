@@ -1,36 +1,40 @@
 # ☁️ CloudDrive
 
-**CloudDrive** is a simple and secure cloud file manager built with Node.js, Express, MongoDB, and Cloudinary. It allows users to register, log in, upload images, and view their personal file collection — all through a clean, modern UI.
+**CloudDrive** is a secure, full-featured personal cloud file manager built using modern web technologies like **Node.js**, **Express**, **MongoDB**, and **Cloudinary**. Users can sign up, log in, upload images, and browse their own private gallery — all within a sleek and responsive UI.
 
 > "Your cloud. Your control. Store smarter, live freer."
 
 ---
 
-## 🚀 Features
+## ✨ Highlights
 
-- 🔐 User authentication (register/login with JWT and bcrypt)
-- 📦 File upload with Cloudinary storage
-- 📁 Personalized file view (only see your own uploads)
-- 🖼️ Stylish image gallery layout
-- ☁️ Fully hosted in the cloud
-- ⚡ Built with EJS, Tailwind CSS, Express, and MongoDB
-
----
-
-## 🧰 Tech Stack
-
-- **Backend**: Node.js, Express.js
-- **Frontend**: EJS + TailwindCSS + Flowbite
-- **Database**: MongoDB (Mongoose)
-- **File Storage**: Cloudinary
-- **Authentication**: JWT + bcrypt
-- **Hosting**: GitHub
+- 🌐 **Deployed and Live** — accessible from anywhere
+- 🔐 **Secure Auth** — register/login with JWT and encrypted passwords
+- ☁️ **Cloud Storage** — uploads go directly to Cloudinary, not your server
+- 🖼️ **Private Gallery** — each user sees only their own uploaded files
+- 📥 **Modal View & Download** — click images to enlarge and download instantly
+- 🎨 **Modern UI** — Tailwind CSS + Flowbite for smooth design and components
+- ⚙️ **Robust Backend** — built with Express.js and MongoDB using Mongoose
+- 💡 **Error Handling & Validation** — user feedback and edge-case protection
 
 ---
 
-## 🧪 Live Demo
+## 🔧 Tech Stack
 
-🔗 [Coming Soon...] or [your render link here]
+| Layer        | Technology                     |
+|--------------|--------------------------------|
+| **Frontend** | EJS, Tailwind CSS, Flowbite    |
+| **Backend**  | Node.js, Express.js            |
+| **Database** | MongoDB (with Mongoose)        |
+| **Auth**     | JWT, bcrypt                    |
+| **Storage**  | Cloudinary (image hosting)     |
+| **Deploy**   | GitHub + Render                |
+
+---
+
+## 🚀 Live Demo
+
+🌍 **URL**: [https://cloud-drive-jmmt.onrender.com/](https://cloud-drive-jmmt.onrender.com/)
 
 ---
 
@@ -41,3 +45,13 @@
 | ![](public/screenshots/home.png) | ![](public/screenshots/upload.png) | ![](public/screenshots/gallery.png) |
 
 ---
+
+## 📦 How to Use Locally
+
+### 1. Clone the Repo
+
+```bash
+git clone https://github.com/yourusername/cloud-drive.git
+cd cloud-drive
+npm install
+
