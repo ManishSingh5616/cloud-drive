@@ -25,7 +25,7 @@
 <body class="min-h-screen flex items-center justify-center">
   
 <% if (user) { %>
-    <div class="absolute top-6 right-8 flex items-center space-x-3 bg-white/80 backdrop-blur-md px-4 py-2 rounded-full shadow-md">
+    <div class="absolute top-6 left-8 flex items-center space-x-3 bg-white/80 backdrop-blur-md px-4 py-2 rounded-full shadow-md">
       <div class="w-10 h-10 bg-blue-600 text-white font-bold flex items-center justify-center rounded-full">
         <%= user.username.charAt(0).toUpperCase() %>
       </div>
@@ -74,6 +74,12 @@
     </button>
                      
   </div>
+  <div class="absolute top-6 right-6">
+  <a href="/user/logout" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md shadow-md transition">
+    Logout
+  </a>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
   <script>
     function showPopUp(){
