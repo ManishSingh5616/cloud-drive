@@ -66,14 +66,33 @@
   </div>
   
   <script>
-  function openModal(imageUrl, modalId) {
+  async function openModal(imageUrl, modalId) {
     const modal = document.getElementById(modalId);
     const modalImage = document.getElementById('modalImage');
     const downloadBtn = document.getElementById('downloadBtn');
-    
+  
     modalImage.src = imageUrl;
-    downloadBtn.href = imageUrl;
     modal.classList.remove('hidden');
+
+    // Trigger cross-origin blob download
+    downloadBtn.onclick = async (e) => {
+      e.preventDefault();
+      try {
+        const response = await fetch(imageUrl);
+        const blob = await response.blob();
+        const blobUrl = window.URL.createObjectURL(blob);
+      
+        const link = document.createElement('a');
+        link.href = blobUrl;
+        link.download = imageUrl.split('/').pop() || 'download';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(blobUrl);
+      }catch (err) {
+        window.open(imageUrl, '_blank');
+      }
+    };
   }
 
   function closeModal() {

@@ -1,3 +1,4 @@
+<!-- home.ejs -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -47,21 +48,23 @@
     </div>
   </div>
 
-  <div class="pop hidden fixed top-0 left-0 h-screen w-screen flex items-center justify-center bg-gray-900 bg-opacity-50 z-50 ">
+  <div class="pop hidden fixed top-0 left-0 h-screen w-screen flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
 
     <form action="/upload" method="POST" enctype="multipart/form-data" class="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
       <h2 class="text-2xl font-bold text-gray-800 mb-6">Upload Your File</h2>
       <p class="text-gray-600 mb-4">Drag and drop your files here or click to select.</p>
-    <div class="flex items-center justify-center w-96">
+      <div class="flex items-center justify-center w-full">
         <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+            <div class="flex flex-col items-center justify-center pt-5 pb-6 text-center px-4">
                 <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
                </svg>
                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+               <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF</p>
+               <!-- Dynamic File Name Display -->
+               <p id="file-name-display" class="text-sm font-semibold text-blue-600 dark:text-blue-400 mt-3 truncate max-w-xs"></p>
             </div>
-           <input id="dropzone-file" type="file" class="hidden" name="file" />
+           <input id="dropzone-file" type="file" class="hidden" name="file" onchange="displaySelectedFileName(this)" />
        </label>
     </div>
     <button type="submit" class="mt-6 w-full text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-lg px-6 py-3 focus:outline-none focus:ring-2 focus:ring-blue-300 transition">
@@ -69,15 +72,16 @@
     </button>
     </form>
 
-    <button onclick="hidePopUp()" class="absolute top-4 right-4 focus:outline-none">
+    <button onclick="hidePopUp()" class="absolute top-4 right-4 focus:outline-none text-white text-2xl">
       <i class="ri-close-large-line"></i>
     </button>
                      
   </div>
+
   <div class="absolute top-6 right-6">
-  <a href="/user/logout" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md shadow-md transition">
-    Logout
-  </a>
+    <a href="/user/logout" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md shadow-md transition">
+      Logout
+    </a>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
@@ -87,6 +91,16 @@
     }
     function hidePopUp(){
       document.querySelector('.pop').style.display = 'none';
+      document.getElementById('file-name-display').textContent = '';
+    }
+
+    function displaySelectedFileName(input) {
+      const fileNameDisplay = document.getElementById('file-name-display');
+      if (input.files && input.files[0]) {
+        fileNameDisplay.textContent = `Selected: ${input.files[0].name}`;
+      } else {
+        fileNameDisplay.textContent = '';
+      }
     }
   </script>
 </body>
